@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+body, .sidebar, .navbar
+{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.errorText{
+    color: red;
+    display:none;
+    font-size: 10px;
+}
+
+table > tbody > tr > td:last-child{
+    width: 1%;
+    white-space: nowrap;
+}
+
+.required:after { 
+  color: #d00;
+  content: "*";
+  position: absolute;
+  margin-left: 5px;
+  top:0px;
+}
+
+
+.error-msg{
+    color: red;
+}
