@@ -6,6 +6,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { MenuTypeModel } from 'src/models/MenuTypeModel';
 import { MenuTypeService } from 'src/app/service/menu-type.service';
+import {ResponseModel} from 'src/models/ResponseModel';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss'
 import 'rxjs/add/operator/map';
@@ -23,6 +24,7 @@ export class MenuTypeComponent implements OnInit {
 
   //#region  [Global Declaration]
   public _listMenuType: MenuTypeModel[];
+  public _responseModel: ResponseModel;
   public menuType_Error: boolean = false;
   public _objMenuType = new MenuTypeModel();
   public isAdd: boolean = false;
@@ -98,11 +100,20 @@ export class MenuTypeComponent implements OnInit {
   //#endregion
 
   //#region [GET DATA]
+
   public getAllMenuTypes() {
     this.isLoadingData = true;
     this.MenuTypeService.GetAllMenuType().subscribe(
-      data => {
-        this._listMenuType = data;
+      data => {        
+        this._responseModel = data;
+        if(this._responseModel.Status == "SUCCESS")
+        {
+          //console.log(JSON.parse(this._responseModel.Message));
+          this._listMenuType = JSON.parse(this._responseModel.Message);
+        }
+        else{
+          alert(this._responseModel.Message);
+        }
       },
       error => {
         console.log(error);
@@ -138,6 +149,7 @@ export class MenuTypeComponent implements OnInit {
     console.log(this._objMenuType);
     this.addMenuTypeFG.reset();
   }
+
   AddMenuType(_objMenuType) {
     console.log(_objMenuType);
     this.MenuTypeService.AddMenuType(_objMenuType).subscribe(
@@ -206,24 +218,25 @@ export class MenuTypeComponent implements OnInit {
   //#endregion
 
   //#region  [DELETE DATA]
-  DeleteMenuType(_MenuType: MenuTypeModel) {
-    if (confirm("Are you sure you want to delete Menu Type named '" + _MenuType.MenuTypeName + "'?")) {
-      this.MenuTypeService.DeleteMenuType(_MenuType).subscribe(
-        data => {
-          // refresh the list
-          alert('Menu Type deleted successfully!');
-          this.getAllMenuTypes();
-          return true;
-        },
-        error => {
-          this.isLoadingData = false;
-          console.log('Error while deleting menu type record.');
-          alert(error);
-        },
-        () => {
-          this.isLoadingData = false;
-        }
-      );
+  DeleteMenuType(event) {
+    if (confirm("Are you sure you want to delete Menu Type. ?")) {
+      alert(event.target.attributes.id.nodeValue);
+      // this.MenuTypeService.DeleteMenuType(_MenuType).subscribe(
+      //   data => {
+      //     // refresh the list
+      //     alert('Menu Type deleted successfully!');
+      //     this.getAllMenuTypes();
+      //     return true;
+      //   },
+      //   error => {
+      //     this.isLoadingData = false;
+      //     console.log('Error while deleting menu type record.');
+      //     alert(error);
+      //   },
+      //   () => {
+      //     this.isLoadingData = false;
+      //   }
+      // );
     }
   }  
   //#endregion

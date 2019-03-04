@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Response, Headers } from '@angular/http';
 import { MenuTypeModel } from 'src/models/MenuTypeModel';
 import { Observable } from 'rxjs/Observable';
+import {ResponseModel} from 'src/models/ResponseModel';
 import 'rxjs/add/operator/map';
 
 @Injectable({
@@ -13,7 +14,7 @@ export class MenuTypeService {
   constructor(private http: Http) { }
 
   public GetAllMenuType() {
-    return this.http.get(this.BaseAPIUrl + 'api/GetMenuType').map((res: Response) => <MenuTypeModel[]>res.json());
+    return this.http.get(this.BaseAPIUrl + 'api/GetAllMenuType').map((res: Response) => <ResponseModel>res.json());
   }
 
   public AddMenuType(MenuTypeModel)
@@ -21,7 +22,7 @@ export class MenuTypeService {
     let _headers = new Headers({'content-type':'application/json'});
     let _requestOptions = new RequestOptions({ headers: _headers});
     let _body = JSON.stringify(MenuTypeModel);
-    return this.http.post(this.BaseAPIUrl + 'api/AddMenuType', _body, _requestOptions).map((res:Response) => res.json());
+    return this.http.post(this.BaseAPIUrl + 'api/AddMenuType', _body, _requestOptions).map((res: Response) => <ResponseModel>res.json());
   }
 
   public UpdateMenuType(MenuTypeModel)
@@ -29,11 +30,11 @@ export class MenuTypeService {
     let _headers = new Headers({ 'content-type': 'application/json' });
     let _requestOptions = new RequestOptions({ headers: _headers });
     let _body = JSON.stringify(MenuTypeModel);
-    return this.http.put(this.BaseAPIUrl + 'api/UpdateMenuType', _body, _requestOptions).map((res: Response) => res.json());
+    return this.http.put(this.BaseAPIUrl + 'api/UpdateMenuType', _body, _requestOptions).map((res: Response) => <ResponseModel>res.json());
   }
 
   public DeleteMenuType(MenuTypeModel)
   {
-    return this.http.delete(this.BaseAPIUrl + 'api/DeleteMenuType/' + MenuTypeModel.MenuTypeId_Pk);
+    return this.http.get(this.BaseAPIUrl + 'api/DeleteMenuType/?MenuTypeId=' + MenuTypeModel.MenuTypeId_Pk).map((res: Response) => <ResponseModel>res.json());
   }
 }
