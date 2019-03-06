@@ -1,16 +1,13 @@
+import { AnonymousSubject } from 'rxjs/internal/Subject';
+
 export class MenuTypeModel{
-     MenuTypeId_Pk:number;
-    MenuTypeName:string ;
-    ECMS_MenuTypePk:any;
+    MenuTypeId:any;
+    MenuTypeName:string ;   
     ShortDesc:string;
     LongDesc:string;
     DisplayOrder:any;
     IsActive:boolean;
     MenuURL:string;
     MenuImage:string;
-    MenuImageText:string;
-    MetaDetail_Fk:any;
-    ParentMenuTypeId:any;
-    CreateDate:any;
-    UpdateDate:any;
+    MenuImageText:string;  
 }
