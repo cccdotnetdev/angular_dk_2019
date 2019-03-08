@@ -46,7 +46,7 @@ export class MenuTypeComponent implements OnInit {
   //#endregion
 
   //#region [Constructor]
-  constructor(private http: Http, private formBuilder: FormBuilder, private MenuTypeService: MenuTypeService) {
+  constructor( private formBuilder: FormBuilder, private MenuTypeService: MenuTypeService) {
     this.addMenuTypeFG = this.CreateFormGroup();
   }
   //#endregion
