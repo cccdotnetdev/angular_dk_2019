@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DishModel } from 'src/models/DishModel';
+import { DishModel } from 'src/app/models/DishModel';
 import { DishService } from 'src/app/service/dish.service';
-import {ResponseModel} from 'src/models/ResponseModel';
+import {ResponseModel} from 'src/app/models/ResponseModel';
 
 @Component({
   selector: 'app-dish',
