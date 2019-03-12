@@ -1,5 +1,5 @@
 export class MenuTypeModel{
-     MenuTypeId_Pk:number;
+    MenuTypeId_Pk:number;
     MenuTypeName:string ;
     ECMS_MenuTypePk:any;
     ShortDesc:string;

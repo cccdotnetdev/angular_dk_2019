@@ -5,12 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { MapComponent }      from './map/map.component';
-import {MenuTypeComponent} from './pages/menu-type/menu-type.component';
-
+import { MenuTypeComponent} from './pages/menu-type/menu-type.component';
+import { MenuComponent} from './pages/menu/menu.component'; 
 
 const routes: Routes = [
   { path: 'map', component: MapComponent },
-  { path:'menutype', component: MenuTypeComponent}
+  { path:'menutype', component: MenuTypeComponent},
+  { path:'menu',component: MenuComponent}
+
 ];
 
 @NgModule({

@@ -12,6 +12,7 @@ import { MenuTypeComponent } from './pages/menu-type/menu-type.component';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { MenuCategoryComponent } from './pages/menu-category/menu-category.component';
 import { HttpModule, ConnectionBackend, RequestOptions} from '@angular/http';
+import { MenuComponent } from './pages/menu/menu.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { HttpModule, ConnectionBackend, RequestOptions} from '@angular/http';
     ContentComponent,
     MapComponent,
     MenuTypeComponent,
-    MenuCategoryComponent
+    MenuCategoryComponent,
+    MenuComponent
 
   ],
   imports: [
