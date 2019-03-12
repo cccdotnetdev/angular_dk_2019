@@ -12,7 +12,11 @@ import { MenuTypeComponent } from './pages/menu-type/menu-type.component';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { MenuCategoryComponent } from './pages/menu-category/menu-category.component';
 import { HttpModule, ConnectionBackend, RequestOptions} from '@angular/http';
+<<<<<<< HEAD
 import { MenuComponent } from './pages/menu/menu.component';
+=======
+import { DishComponent } from './pages/dish/dish.component';
+>>>>>>> 89ce48fb0a4226753446fe0f0662ddcd171eb7bf
 
 
 @NgModule({
@@ -24,7 +28,11 @@ import { MenuComponent } from './pages/menu/menu.component';
     MapComponent,
     MenuTypeComponent,
     MenuCategoryComponent,
+<<<<<<< HEAD
     MenuComponent
+=======
+    DishComponent
+>>>>>>> 89ce48fb0a4226753446fe0f0662ddcd171eb7bf
 
   ],
   imports: [

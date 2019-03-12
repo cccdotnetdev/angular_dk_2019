@@ -4,9 +4,9 @@ import { Http, Response, Headers } from '@angular/http';
 import { Title } from '@angular/platform-browser';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { MenuTypeModel } from 'src/models/MenuTypeModel';
+import { MenuTypeModel } from 'src/app/models/MenuTypeModel';
 import { MenuTypeService } from 'src/app/service/menu-type.service';
-import {ResponseModel} from 'src/models/ResponseModel';
+import {ResponseModel} from 'src/app/models/ResponseModel';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss'
 import 'rxjs/add/operator/map';
@@ -110,6 +110,7 @@ export class MenuTypeComponent implements OnInit {
         {
           //console.log(JSON.parse(this._responseModel.Message));
           this._listMenuType = JSON.parse(this._responseModel.Message);
+          console.log(this._listMenuType);
         }
         else{
           alert(this._responseModel.Message);
@@ -178,20 +179,17 @@ export class MenuTypeComponent implements OnInit {
     this.divAdd = true;
     this.divList = false;
     this._objMenuType = {
-      MenuTypeId_Pk: _MenuType.MenuTypeId_Pk,
+      MenuTypeId: _MenuType.MenuTypeId,
       MenuTypeName: _MenuType.MenuTypeName,
-      ECMS_MenuTypePk: _MenuType.ECMS_MenuTypePk,
+     
       ShortDesc: _MenuType.ShortDesc,
       LongDesc: _MenuType.LongDesc,
       DisplayOrder: _MenuType.DisplayOrder,
       IsActive: _MenuType.IsActive,
       MenuURL: _MenuType.MenuURL,
       MenuImage: _MenuType.MenuImage,
-      MenuImageText: _MenuType.MenuImageText,
-      MetaDetail_Fk: _MenuType.MetaDetail_Fk,
-      ParentMenuTypeId: _MenuType.ParentMenuTypeId,
-      CreateDate: _MenuType.CreateDate,
-      UpdateDate: _MenuType.UpdateDate
+      MenuImageText: _MenuType.MenuImageText
+     
     };
     
   }
@@ -218,9 +216,10 @@ export class MenuTypeComponent implements OnInit {
   //#endregion
 
   //#region  [DELETE DATA]
-  DeleteMenuType(event) {
+  DeleteMenuType(_MenuType: MenuTypeModel) {
     if (confirm("Are you sure you want to delete Menu Type. ?")) {
-      alert(event.target.attributes.id.nodeValue);
+      //alert(event.target.attributes.id.nodeValue);
+      alert(_MenuType.MenuTypeId);
       // this.MenuTypeService.DeleteMenuType(_MenuType).subscribe(
       //   data => {
       //     // refresh the list
