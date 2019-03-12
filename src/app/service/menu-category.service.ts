@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import{RequestOptions, Response, Http, Headers } from '@angular/http';
-import {MenuCategoryModel}
+import {GlobalVariable} from 'src/Common/Utilities';
 
 @Injectable({
   providedIn: 'root'
