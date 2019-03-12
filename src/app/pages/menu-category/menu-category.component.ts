@@ -10,6 +10,7 @@ export class MenuCategoryComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
