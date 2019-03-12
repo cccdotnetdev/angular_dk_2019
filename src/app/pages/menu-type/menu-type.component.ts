@@ -4,9 +4,9 @@ import { Http, Response, Headers } from '@angular/http';
 import { Title } from '@angular/platform-browser';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { MenuTypeModel } from 'src/models/MenuTypeModel';
+import { MenuTypeModel } from 'src/app/models/MenuTypeModel';
 import { MenuTypeService } from 'src/app/service/menu-type.service';
-import {ResponseModel} from 'src/models/ResponseModel';
+import {ResponseModel} from 'src/app/models/ResponseModel';
 import Swal from 'sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss'
 import 'rxjs/add/operator/map';

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Response, Headers } from '@angular/http';
-import { MenuTypeModel } from 'src/models/MenuTypeModel';
+import { MenuTypeModel } from 'src/app/models/MenuTypeModel';
 import { Observable } from 'rxjs/Observable';
-import {ResponseModel} from 'src/models/ResponseModel';
+import {ResponseModel} from 'src/app/models/ResponseModel';
 import 'rxjs/add/operator/map';
-import {GlobalVariable} from 'src/Common/Utilities';
+import {GlobalVariable} from 'src/app/Common/Utilities';
 
 @Injectable({
   providedIn: 'root'
