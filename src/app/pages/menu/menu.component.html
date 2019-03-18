@@ -1,3 +1,185 @@
-<p>
-  menu works!
-</p>
+<div class="block-header">
+  <h2>Menu</h2>
+</div>
+<!-- Start : Add Edit Menu Form -->
+<div class="row clearfix" *ngIf="divAdd">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+      <div class="header">
+        <h2>
+          Add Menu
+        </h2>
+        <ul class="header-dropdown m-r--5">
+          <li class="dropdown">
+            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false">
+              <i class="material-icons">more_vert</i>
+            </a>
+            <ul class="dropdown-menu pull-right">
+              <li><a href="javascript:void(0);" (click)="ClearData()">Go to List</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="body">
+        <form [formGroup]="addMenuFG">
+          <input type="hidden" formControlName="_menuId" [(ngModel)]="_objMenu.MenuId" />
+          <div class="row clearfix">
+            <div class="col-sm-6 col-lg-6 col-md-6 col-xs-6">
+              <label class="required">Menu Type</label>
+              <div class="form-group">
+                <div class="form-line">
+                  <select class="form-control show-tick" formControlName="_menuTypeName" [(ngModel)]="selectedType">
+                    <option value="">select</option>
+                    <option *ngFor="let item of _lstMenuType" value="{{item.MenuTypeId}}">{{item.MenuTypeName}}</option>
+                  </select>
+                </div>
+                <div *ngIf="(addMenuFG.controls['_menuTypeName'].dirty || addMenuFG.controls['_menuTypeName'].touched)"
+                  class="error-msg">
+                  <div *ngIf="addMenuFG.get('_menuTypeName').hasError('required')">Menu type is required.</div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-6 col-md-6 col-xs-6">
+              <label class="required">Menu</label>
+              <div class="form-group">
+                <div class="form-line">
+                  <input type="text" class="form-control" formControlName="_menuName" [(ngModel)]="_objMenu.MenuName" />
+                </div>
+                <!-- <app-field-error-display [displayError]="isFieldValid('_menuName')" errorMsg="Please enter menu name">
+                </app-field-error-display> -->
+                <div *ngIf="(addMenuFG.controls['_menuName'].dirty || addMenuFG.controls['_menuName'].touched)" class="error-msg">
+                  <div *ngIf="addMenuFG.get('_menuName').hasError('required')">Menu name is required.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row clearfix">
+            <div class="col-sm-12 col-lg-12 col-md-12 col-xs-12">
+              <label class="required">Menu Description</label>
+              <div class="form-group">
+                <div class="form-line">
+                  <textarea rows="4" class="form-control no-resize" placeholder="Enter Description" formControlName="_menuDesc"
+                    required [(ngModel)]="_objMenu.MenuDesc"></textarea>
+                </div>
+                <div *ngIf="(addMenuFG.controls['_menuDesc'].dirty || addMenuFG.controls['_menuDesc'].touched)" class="error-msg">
+                  <div *ngIf="addMenuFG.get('_menuDesc').hasError('required')">Menu Description is required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="col-lg-6 col-md-4 col-xs-12 col-sm-12">
+              <label class="required">Menu Image</label>
+              <input type="file" id="MenuImage" formControlName="_menuImage" [(ngModel)]="_objMenu.MenuImage" />
+            </div>
+            <div class="col-lg-6 col-md-4 col-xs-12 col-sm-12">
+              <div class="form-group">
+                <div class="form-line">
+                  <label class="required">Alternate Image Text</label>
+                  <input type="text" class="form-control" placeholder="Enter Alternate Image Text" id="MenuImageText"
+                    formControlName="_menuImageText" [(ngModel)]="_objMenu.MenuImageText" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+              <label>Is Active</label>
+              <div class="switch">
+                <label><input type="checkbox" checked formControlName="_isActive" [(ngModel)]="_objMenu.IsActive">
+                  <span class="lever"></span>Active</label>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-4 col-xs-12 col-sm-12 ">
+              <label>Is Fetured</label>
+              <div class="switch">
+                <label><input type="checkbox" checked formControlName="_isFeatured" [(ngModel)]="_objMenu.IsFeatured">
+                  <span class="lever"></span>Fetured</label>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 ">
+              <label>Display Order</label>
+              <div class="form-group">
+                <div class="form-line">
+                  <input type="text" class="form-control" formControlName="_displayOrder" [(ngModel)]="_objMenu.DisplayOrder" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 ">
+              <button id="btnSave" *ngIf="isAdd" class="btn btn-info" type="button" (click)="onSubmit()">Save</button>
+              &nbsp;
+              <button id="btnUpdate" *ngIf="isEdit" class="btn btn-info" type="button">Update</button>
+              &nbsp;
+              <button id="btnCancel" type="button" class="btn btn-light" (click)="ClearData()">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End : Add Edit Menu Form -->
+
+<!-- Start : Menu List-->
+<div class="row clearfix" *ngIf="divList">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+      <div class="header">
+        <h2>
+          Menu List
+        </h2>
+        <ul class="header-dropdown m-r--5">
+          <li class="dropdown">
+            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false">
+              <i class="material-icons">more_vert</i>
+            </a>
+            <ul class="dropdown-menu pull-right">
+              <li><a href="javascript:void(0);" (click)="GotoAddMenu()">Add Menu-Type</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="body">
+        <div class="row clearfix">
+          <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 form-group">
+            <table class="table table-responsive thead-dark">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Image</th>
+                  <th>Menu</th>
+                  <th>Display Order</th>
+                  <th>Is Active</th>
+                  <th>Update Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let item of _lstMenu">
+                <tr>
+                  <td>{{item.MenuImage}}</td>
+                  <td>{{item.MenuName}}</td>
+                  <td>{{item.DisplayOrder}}</td>
+                  <td>{{item.IsActive == true ? 'Active' : 'Inactive'}}</td>
+                  <td>{{item.UpdateDate}}</td>
+                  <td>
+                    <button class="btn btn-info" id="btn{{MenuId}}">Edit</button>&nbsp;
+                    <button class="btn btn-danger" id="btn{{MenuId}}">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start Menu List-->

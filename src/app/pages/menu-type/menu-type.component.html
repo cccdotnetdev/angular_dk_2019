@@ -11,10 +11,6 @@
         <div class="card">
             <div class="header">
                 <h2>
-
-
-
-
                     Add Menu Type
                 </h2>
                 <ul class="header-dropdown m-r--5">
@@ -37,8 +33,8 @@
                             <label class="required">Title</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" formControlName="_menuTypeName"
-                                        placeholder="Enter Title..." required [(ngModel)]="_objMenuType.MenuTypeName" />
+                                    <input type="text" class="form-control" formControlName="_menuTypeName" placeholder="Enter Title..."
+                                        required [(ngModel)]="_objMenuType.MenuTypeName" />
                                 </div>
                                 <div *ngIf="(addMenuTypeFG.controls['_menuTypeName'].dirty || addMenuTypeFG.controls['_menuTypeName'].touched)"
                                     class="error-msg">
@@ -51,9 +47,8 @@
                             <label class="required">Short Description</label>
                             <div class="form-group">
                                 <div class="form-line">
-                                    <input type="text" class="form-control" placeholder="Enter Short Description..."
-                                        id="ShortDesc" name="ShortDesc" formControlName="_shortDesc" required
-                                        [(ngModel)]="_objMenuType.ShortDesc" />
+                                    <input type="text" class="form-control" placeholder="Enter Short Description..." id="ShortDesc"
+                                        name="ShortDesc" formControlName="_shortDesc" required [(ngModel)]="_objMenuType.ShortDesc" />
                                 </div>
                                 <div *ngIf="(addMenuTypeFG.controls['_shortDesc'].dirty || addMenuTypeFG.controls['_shortDesc'].touched)"
                                     class="error-msg">
@@ -70,12 +65,12 @@
                             <div class="form-group">
                                 <div class="form-line">
                                     <textarea rows="4" class="form-control no-resize" placeholder="Enter Description..."
-                                        formControlName="_longDesc" required
-                                        [(ngModel)]="_objMenuType.LongDesc"></textarea>
+                                        formControlName="_longDesc" required [(ngModel)]="_objMenuType.LongDesc"></textarea>
                                 </div>
                                 <div *ngIf="(addMenuTypeFG.controls['_longDesc'].dirty || addMenuTypeFG.controls['_longDesc'].touched)"
                                     class="error-msg">
-                                    <div *ngIf="addMenuTypeFG.get('_longDesc').hasError('required')">Long Description is
+                                    <div *ngIf="addMenuTypeFG.get('_longDesc').hasError('required')">Long Description
+                                        is
                                         required.</div>
                                 </div>
                             </div>
@@ -85,15 +80,14 @@
                         <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 ">
                             <label>Menu type Active Status</label>
                             <div class="switch">
-                                <label><input type="checkbox" checked formControlName="_isActive"
-                                        [(ngModel)]="_objMenuType.IsActive"> <span class="lever"></span> Is
+                                <label><input type="checkbox" checked formControlName="_isActive" [(ngModel)]="_objMenuType.IsActive">
+                                    <span class="lever"></span> Is
                                     Active</label>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
                             <label class="required">Menu Type Image</label>
-                            <input type="file" id="MenuImage" formControlName="_menuImage"
-                                [(ngModel)]="_objMenuType.MenuImage" />
+                            <input type="file" id="MenuImage" formControlName="_menuImage" [(ngModel)]="_objMenuType.MenuImage" />
                             <div *ngIf="(addMenuTypeFG.controls['_menuImage'].dirty || addMenuTypeFG.controls['_menuImage'].touched)"
                                 class="error-msg">
                                 <div *ngIf="addMenuTypeFG.get('_menuImage').hasError('required')">Menu type Image is
@@ -105,8 +99,7 @@
                                 <div class="form-line">
                                     <label class="required">Alternate Image Text</label>
                                     <input type="text" class="form-control" placeholder="Enter Alternate Image Text..."
-                                        id="MenuImageText" formControlName="_menuImageText"
-                                        [(ngModel)]="_objMenuType.MenuImageText" />
+                                        id="MenuImageText" formControlName="_menuImageText" [(ngModel)]="_objMenuType.MenuImageText" />
 
                                 </div>
                                 <div *ngIf="(addMenuTypeFG.controls['_menuImageText'].dirty || addMenuTypeFG.controls['_menuImageText'].touched)"
@@ -121,12 +114,12 @@
                     </div>
                     <div class="row clearfix">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <button id="btnSave" *ngIf="isAdd" class="btn btn-info" (click)="AddMenuType(_objMenuType);"
+                            <button id="btnSave" *ngIf="isAdd" class="btn btn-info" 
+                            (click)="AddMenuType(_objMenuType);"
                                 type="button">Save</button> &nbsp;
-                            <button id="btnUpdate" *ngIf="isEdit" class="btn btn-info"
-                                (click)="UpdateMenuType(_objMenuType);" type="button">Update</button> &nbsp;
-                            <button id="btnCancel" type="button" class="btn btn-light"
-                                (click)="ClearData()">Cancel</button>
+                            <button id="btnUpdate" *ngIf="isEdit" class="btn btn-info" (click)="UpdateMenuType(_objMenuType);"
+                                type="button">Update</button> &nbsp;
+                            <button id="btnCancel" type="button" class="btn btn-light" (click)="ClearData()">Cancel</button>
                         </div>
                     </div>
                 </form>
@@ -174,8 +167,7 @@
                                     <td>{{item.MenuTypeName}}</td>
                                     <td>{{item.ShortDesc}}</td>
                                     <td>
-                                        <button class="btn btn-info" id="{{item}}"
-                                            (click)="EditMenuType(item)">Edit</button>&nbsp;<button
+                                        <button class="btn btn-info" id="{{item}}" (click)="EditMenuType(item)">Edit</button>&nbsp;<button
                                             class="btn btn-danger" id="" (click)="DeleteMenuType(item)">Delete</button>
                                     </td>
                                 </tr>
